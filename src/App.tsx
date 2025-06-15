@@ -9,12 +9,24 @@ function App() {
     setPlace(place);
   };
   return (
-    <div className="grid grid-cols-12 h-screen w-screen gap-2">
-      <div className="md:col-span-3 col-span-12">
-        <SearchLocation onHadleClickGo={onClickHandleGo} />
+    <div className="h-screen w-screen">
+      {/* Desktop layout */}
+      <div className="hidden md:grid grid-cols-12 gap-2 h-full">
+        <div className="col-span-3">
+          <SearchLocation onHadleClickGo={onClickHandleGo} />
+        </div>
+        <div className="col-span-9">
+          <Map place={place} />
+        </div>
       </div>
-      <div className="md:col-span-9 col-span-12">
-        <Map place={place} />
+      {/* Mobile layout */}
+      <div className="grid md:hidden grid-cols-1 gap-2 h-full">
+        <div>
+          <Map place={place} />
+        </div>
+        <div>
+          <SearchLocation onHadleClickGo={onClickHandleGo} />
+        </div>
       </div>
     </div>
   );
